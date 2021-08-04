@@ -1,10 +1,9 @@
 NAME 				= push_swap
-LIBFT_NAME			= libft.a
 
-HEADER				= include/push_swap.c
+HEADER				= include/push_swap.h
 
 SRC_DIR				= source/
-SRC 				= 
+SRC 				= do_push.c main.c
 OBJ_DIR				= objects/
 OBJ 				= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
@@ -20,7 +19,7 @@ all : sub_dir $(LIBFT) $(NAME)
 sub_dir :
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o : $(SOUCRE_DIR)%.c $(HEADER)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(HEADER)
 	gcc $(FLAGS) -c $<	-o $@  -I ./includes/
 
 $(NAME) : $(OBJ) $(LIBFT)
@@ -35,7 +34,7 @@ fclean : clean
 	rm includes/libft.h
 	rm $(NAME)
 
-clean 
+clean :
 	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -rf $(OBJ_DIR)
 
