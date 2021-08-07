@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "stdlib.h"
 
-size_t static	calc_size(int n)
+static size_t	calc_size(int n)
 {
 	size_t	res;
 
@@ -30,7 +30,7 @@ size_t static	calc_size(int n)
 	return (res);
 }
 
-void static	iter(char *res, int n, size_t size)
+static void	iter(char *res, int n, size_t size)
 {
 	if (n >= 0)
 	{

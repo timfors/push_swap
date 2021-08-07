@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	static	charcomp(unsigned char c1, unsigned char c2)
+static int	charcomp(unsigned char c1, unsigned char c2)
 {
 	if (c1 > c2)
 		return (1);

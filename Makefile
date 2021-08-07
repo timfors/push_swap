@@ -1,4 +1,5 @@
 NAME 				= push_swap
+LIBFT_NAME			= libft.a
 
 HEADER				= include/push_swap.h
 
@@ -11,7 +12,7 @@ LIBFT_DIR			= libft/
 LIBFT				= $(LIBFT_DIR)$(LIBFT_NAME)
 
 FLAGS 				= -Werror -Wall -Wextra
-HEADER 				= push_swap.h
+HEADER 				= includes/push_swap.h
 
 
 all : sub_dir $(LIBFT) $(NAME) 
@@ -20,7 +21,7 @@ sub_dir :
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c $(HEADER)
-	gcc $(FLAGS) -c $<	-o $@  -I ./includes/
+	gcc $(FLAGS) -c $< -o $@  -I ./includes/
 
 $(NAME) : $(OBJ) $(LIBFT)
 	gcc $(FLAGS)  -o $@ $^ -I ./includes/
@@ -40,4 +41,4 @@ clean :
 
 re : fclean all
 
-.PHONY : all clean fclean re bonus sub_dir
+.PHONY : all clean fclean re sub_dir

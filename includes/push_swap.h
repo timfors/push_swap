@@ -7,8 +7,8 @@
 
 typedef struct s_collumns
 {
-	t_list	**a;
-	t_list	**b;
+	t_list	*a;
+	t_list	*b;
 }			t_collumns;
 
 typedef struct s_flags
