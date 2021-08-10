@@ -1,5 +1,4 @@
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	add_num(t_list **lst, int num)
 {
@@ -38,7 +37,8 @@ int	main()
 	if (!col)
 		return (0);
 	add_num(&(col->a), 123);
+	add_num(&(col->a), 2);
 	add_num(&(col->b), 1);
-	do_pb(col);
+	do_ss(col);
 	ft_lstiter(col->a, print_elem);
 }
