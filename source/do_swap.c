@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-static void	do_swap(t_list **lst)
+void	do_swap(t_list **lst)
 {
 	t_list	*tmp;
 	if (!lst || ft_lstsize(*lst) <= 1)

@@ -39,3 +39,21 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		res = charcomp(s1[i], s2[i]);
 	return (res);
 }
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+	int		res;
+
+	i = 0;
+	res = 0;
+	while (s1[i] && s2[i])
+	{
+		res = charcomp(s1[i], s2[i]);
+		if (res)
+			return (res);
+		i++;
+	}
+	res = charcomp(s1[i], s2[i]);
+	return (res);
+}

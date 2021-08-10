@@ -40,8 +40,8 @@ void		do_rra(t_collumns *collumns);
 void		do_rrb(t_collumns *collumns);
 void		do_rrr(t_collumns *collumns);
 
-void		swap_first(t_list **list);
-void		rotate_up(t_list **list);
-void		rotate_down(t_list **list);
-void		push_first(t_list **dst, t_list **src);
+void		do_swap(t_list **lst);
+void		do_roll(t_list **lst, int direction);
+int		check_unique(char **src, int count, int index)
+
 #endif

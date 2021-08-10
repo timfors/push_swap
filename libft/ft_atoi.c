@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_pow(int num, int size)
+int	ft_pow(int num, int size)
 {
 	int	i;
 	int	res;

@@ -1,15 +1,5 @@
 #include "../includes/push_swap.h"
 
-void	add_num(t_list **lst, int num)
-{
-	int *content = malloc(sizeof(int));
-	if (!content)
-		return;
-	*content = num;
-	t_list *new = ft_lstnew(content);
-	ft_lstadd_front(lst, new);
-}
-
 void	print_elem(void *content)
 {
 	int	*data = content;
@@ -38,7 +28,8 @@ int	main()
 		return (0);
 	add_num(&(col->a), 123);
 	add_num(&(col->a), 2);
-	add_num(&(col->b), 1);
-	do_ss(col);
+	add_num(&(col->a), 1);
+	do_ra(col);
+	do_rra(col);
 	ft_lstiter(col->a, print_elem);
 }
