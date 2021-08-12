@@ -20,16 +20,27 @@ t_collumns	*init_col()
 	 return (res);
 }
 
-int	main()
+void	delete_col(t_collumns *col)
+{
+	if (!col)
+		return ;
+	ft_lstclear(&(col->a), free);
+	ft_lstclear(&(col->b), free);
+	free(col);
+}
+
+int	main(int argc, char **argv)
 {
 	t_collumns *col = init_col();
 
 	if (!col)
 		return (0);
-	add_num(&(col->a), 123);
-	add_num(&(col->a), 2);
-	add_num(&(col->a), 1);
-	do_ra(col);
-	do_rra(col);
-	ft_lstiter(col->a, print_elem);
+	col->a = parse(argv, argc);
+	if (col->a)
+	{
+		ft_lstiter(col->a, print_elem);
+	}
+	else 
+		ft_putstr_fd("Error\n", 1);
+	delete_col(col);
 }

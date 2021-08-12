@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-void push_first(t_list **dst, t_list **src)
+void	push_first(t_list **dst, t_list **src)
 {
 	t_list *src_first;
 

@@ -4,7 +4,7 @@ LIBFT_NAME			= libft.a
 HEADER				= include/push_swap.h
 
 SRC_DIR				= source/
-SRC 				= do_push.c main.c do_swap.c do_roll.c do_reverce_roll.c
+SRC 				= do_push.c main.c do_swap.c do_roll.c do_reverce_roll.c parse.c
 OBJ_DIR				= objects/
 OBJ 				= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

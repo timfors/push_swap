@@ -11,6 +11,9 @@ typedef struct s_collumns
 	t_list	*b;
 }			t_collumns;
 
+t_collumns	*init_col();
+void		delete_col(t_collumns *col);
+
 typedef struct s_flags
 {
 	int	is_rotate_a;
@@ -23,7 +26,7 @@ typedef struct s_flags
 
 typedef int	(*t_action)(t_collumns *collumns);
 
-int			*get_nums(char **num);
+t_list			*parse(char **str, int count);
 int			sort(t_collumns *collumns);
 t_flags		*init_flags(t_collumns *collumns);
 t_action	get_action(t_flags flags);
@@ -42,6 +45,5 @@ void		do_rrr(t_collumns *collumns);
 
 void		do_swap(t_list **lst);
 void		do_roll(t_list **lst, int direction);
-int		check_unique(char **src, int count, int index)
 
 #endif
