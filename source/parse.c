@@ -1,40 +1,49 @@
 #include "../includes/push_swap.h"
 
-void	add_num(t_list **lst, int num)
+static int	check_unique(t_element *el, int num)
 {
-	int *content = malloc(sizeof(int));
-	if (!content)
-		return;
-	*content = num;
-	t_list *new = ft_lstnew(content);
-	ft_lstadd_back(lst, new);
-}
-
-int	check_unique(char **src, int count, int index)
-{
-	char	*str;
-
-	if (index >= count)
-		return (-1);
-	str = *(src + index);
-	while (++index < count)
-		if (!ft_strcmp(str, src[index]))
-			return (-1);
+	while (el)
+	{
+		if (el->value == num)
+			return (0);
+		el = el->next;
+	}
 	return (1);
 }
 
-int	check_str(char **src, int count, int index)
+static int	parse_str(char *str, t_element **el)
 {
-	if (!src || check_unique(src, count, index) == -1)
-		return (-1);
+	int		index;
+	int		num;
+	t_element	*new_el;
+	char		**splitted;
+
+	if (!str)
+		return (0);
+	index = 0;
+	splitted = ft_split(str, ' ');
+	if (!splitted)
+		return (0);
+	while (splitted[index])
+	{
+		new_el = ft_calloc(sizeof(t_element), 1);
+		if (!new_el || ft_atoi_save(splitted[index], &num) == -1 || !check_unique(*el, num))
+		{
+			free(splitted);
+			return (0);
+		}
+		new_el->value = num;
+		index++;
+		elem_push_back(el, new_el);
+	}
+	free(splitted);
 	return (1);
 }
 
-t_list	*parse(char **src, int count)
+t_element	*parse(char **src, int count)
 {
-	t_list	*res;
-	int	index;
-	int	num;
+	t_element	*res;
+	int		index;
 
 	if (!src)
 		return (0);
@@ -42,10 +51,11 @@ t_list	*parse(char **src, int count)
 	res = 0;
 	while (index < count)
 	{
-		if (check_str(src, count, index) == -1
-				|| ft_atoi_save(src[index], &num) == -1)
+		if (!parse_str(src[index], &res))
+		{
+			elem_clear(&res);
 			return (0);
-		add_num(&res, num);
+		}
 		index++;
 
 	}

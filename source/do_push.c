@@ -1,22 +1,22 @@
 #include "../includes/push_swap.h"
 
-void	push_first(t_list **dst, t_list **src)
+void	push_first(t_element **dst, t_element **src)
 {
-	t_list *src_first;
+	t_element	*src_first;
 
 	src_first = *src;
 	*src = src_first->next;
-	ft_lstadd_front(dst, src_first);
+	elem_push_front(dst, src_first);
 }
 
-void	do_pa(t_collumns *collumns)
+int	do_pa(t_element **a, t_element **b, t_string **str)
 {
-	push_first(&(collumns->b), &(collumns->a));
-	ft_putstr_fd("pa\n", 1);
+	push_first(a, b);
+	return (string_add(str, "pa\n"));
 }
 
-void	do_pb(t_collumns *collumns)
+int	do_pb(t_element **a, t_element **b, t_string **str)
 {
-	push_first(&(collumns->a), &(collumns->b));
-	ft_putstr_fd("pb\n", 1);
+	push_first(b, a);
+	return (string_add(str, "pb\n"));
 }

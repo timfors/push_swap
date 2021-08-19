@@ -1,31 +1,31 @@
 #include "../includes/push_swap.h"
 
-void	do_swap(t_list **lst)
+void	do_swap(t_element **el)
 {
-	t_list	*tmp;
-	if (!lst || ft_lstsize(*lst) <= 1)
+	t_element	*tmp;
+	if (!el || elem_size(*el) <= 1)
 		return ;
-	tmp = *lst;
-	*lst = tmp->next;
-	tmp->next = (*lst)->next;
-	(*lst)->next = tmp;
+	tmp = *el;
+	*el = tmp->next;
+	tmp->next = (*el)->next;
+	(*el)->next = tmp;
 }
 
-void		do_sa(t_collumns *collumns)
+int		do_sa(t_element **a, t_string **str)
 {
-	do_swap(&(collumns->a));
-	ft_putstr_fd("sa\n", 1);
+	do_swap(a);
+	return (string_add(str, "sa\n"));
 }
 
-void		do_sb(t_collumns *collumns)
+int		do_sb(t_element **b, t_string **str)
 {
-	do_swap(&(collumns->b));
-	ft_putstr_fd("sb\n", 1);
+	do_swap(b);
+	return (string_add(str, "sb\n"));
 }
 
-void		do_ss(t_collumns *collumns)
+int		do_ss(t_element **a, t_element **b, t_string **str)
 {
-	do_swap(&(collumns->a));
-	do_swap(&(collumns->b));
-	ft_putstr_fd("ss\n", 1);
+	do_swap(a);
+	do_swap(b);
+	return (string_add(str, "ss\n"));
 }

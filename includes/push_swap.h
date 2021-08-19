@@ -5,45 +5,79 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_collumns
+
+typedef struct s_element
 {
-	t_list	*a;
-	t_list	*b;
-}			t_collumns;
+	int			index;
+	int			value;
+	struct s_element	*next;
+	int			is_marked;
+}				t_element;
 
-t_collumns	*init_col();
-void		delete_col(t_collumns *col);
+t_element	*elem_create(int num);
+int		elem_size(t_element *el);
+void		elem_push_front(t_element **dst, t_element *new_el);
+void		elem_push_back(t_element **dst, t_element *new_el);
+void		elem_clear(t_element **el);
+t_element	*elem_last(t_element *el);
+t_element	*elem_get(t_element *el, int index);
+int		*elem_to_arr(t_element *el);
+t_element	*elem_copy(t_element *el);
 
-typedef struct s_flags
+
+typedef struct s_string
 {
-	int	is_rotate_a;
-	int	is_rotate_b;
-	int	is_swap_a;
-	int	is_swap_b;
-	int	is_push_a;
-	int	is_push_b;
-}		t_flags;
+	char		*content;
+	struct s_string	*next;
+}			t_string;
 
-typedef int	(*t_action)(t_collumns *collumns);
+//REMOVE
+void		print_elems(t_element *a, t_element *b);
+void		print_elems_full(t_element *a);
+//REMOVE 
 
-t_list			*parse(char **str, int count);
-int			sort(t_collumns *collumns);
-t_flags		*init_flags(t_collumns *collumns);
-t_action	get_action(t_flags flags);
+int		string_add(t_string **str, const char *new_str);
+void		string_clear(t_string **str);
+void		string_print(t_string *str);
 
-void		do_sa(t_collumns *collumns);
-void		do_sb(t_collumns *collumns);
-void		do_ss(t_collumns *collumns);
-void		do_pa(t_collumns *collumns);
-void		do_pb(t_collumns *collumns);
-void		do_ra(t_collumns *collumns);
-void		do_rb(t_collumns *collumns);
-void		do_rr(t_collumns *collumns);
-void		do_rra(t_collumns *collumns);
-void		do_rrb(t_collumns *collumns);
-void		do_rrr(t_collumns *collumns);
+t_element	*parse(char **str, int count);
 
-void		do_swap(t_list **lst);
-void		do_roll(t_list **lst, int direction);
+typedef int	(*count_func)(t_element *);
+
+void		markup_reset(t_element *a);
+
+t_string	*sort_index(t_element *a);
+
+int		do_markup_index(t_element *a);
+int		markup_index_count(t_element *a);
+void		markup_index_set(t_element *a);
+
+int		push_to_b_index(t_element **a, t_element **b, t_string **str);
+
+int		do_markup_value(t_element *a);
+int		markup_value_count(t_element *a);
+void		markup_value_set(t_element *a);
+
+int		push_to_b_value(t_element **a, t_element **b, t_string **str);
+
+t_string	*sort(t_element *marked_elems);
+
+int		do_sa(t_element **a, t_string **str);
+int		do_sb(t_element **b, t_string **str);
+int		do_ss(t_element **a, t_element **b, t_string **str);
+int		do_pa(t_element **a, t_element **b, t_string **str);
+int		do_pb(t_element **a, t_element **b, t_string **str);
+int		do_ra(t_element **a, t_string **str);
+int		do_rb(t_element **b, t_string **str);
+int		do_rr(t_element **a, t_element **b, t_string **str);
+int		do_rra(t_element **a, t_string **str);
+int		do_rrb(t_element **b, t_string **str);
+int		do_rrr(t_element **a, t_element **b, t_string **str);
+
+int		check_swap(t_element *a, int count, count_func calc_count);
+
+void		push_first(t_element **dst, t_element **src);
+void		do_swap(t_element **el);
+void		do_roll(t_element **el, int direction);
 
 #endif

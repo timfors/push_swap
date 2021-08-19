@@ -37,6 +37,8 @@ int	ft_atoi_save(const char *str, int *num)
 
 	*num = 1;
 	start = 0;
+	while (str[start] > 0 && str[start] < 33 && str[start] != '\e')
+		start++;
 	if (str[start] == '+')
 		start++;
 	else if (str[start] == '-')

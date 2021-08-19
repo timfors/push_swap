@@ -1,20 +1,20 @@
 #include "../includes/push_swap.h"
 
-void	do_rra(t_collumns *collumns)
+int	do_rra(t_element **a, t_string **str)
 {
-	do_roll(&(collumns->a), -1);
-	ft_putstr_fd("rra\n", 1);
+	do_roll(a, -1);
+	return (string_add(str, "rra\n"));
 }
 
-void	do_rrb(t_collumns *collumns)
+int	do_rrb(t_element **b, t_string **str)
 {
-	do_roll(&(collumns->b), -1);
-	ft_putstr_fd("rrb\n", 1);
+	do_roll(b, -1);
+	return (string_add(str, "rrb\n"));
 }
 
-void	do_rrr(t_collumns *collumns)
+int	do_rrr(t_element **a, t_element **b, t_string **str)
 {
-	do_roll(&(collumns->a), -1);
-	do_roll(&(collumns->b), -1);
-	ft_putstr_fd("rrr\n", 1);
+	do_roll(a, -1);
+	do_roll(b, -1);
+	return (string_add(str, "rrr\n"));
 }
