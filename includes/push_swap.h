@@ -43,6 +43,7 @@ void		string_print(t_string *str);
 t_element	*parse(char **str, int count);
 
 typedef int	(*count_func)(t_element *);
+typedef void	(*set_mark)(t_element *);
 
 void		markup_reset(t_element *a);
 
@@ -74,7 +75,7 @@ int		do_rra(t_element **a, t_string **str);
 int		do_rrb(t_element **b, t_string **str);
 int		do_rrr(t_element **a, t_element **b, t_string **str);
 
-int		check_swap(t_element *a, int count, count_func calc_count);
+int		check_swap(t_element *a, int count, count_func calc_count, set_mark mark);
 
 void		push_first(t_element **dst, t_element **src);
 void		do_swap(t_element **el);
