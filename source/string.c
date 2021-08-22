@@ -21,6 +21,19 @@ static t_string	*string_create(const char *new_str)
 
 }
 
+int		string_size(t_string *str)
+{
+	int	res;
+
+	res = 0;
+	while (str)
+	{
+		res++;
+		str = str->next;
+	}
+	return (res);
+}
+
 int		string_add(t_string **str, const char *new_str)
 {
 	t_string	*new;

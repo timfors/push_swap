@@ -55,7 +55,6 @@ int	push_to_b_index(t_element **a, t_element **b, t_string **str)
 {
 	while	(contains_unmarked(*a))
 	{
-		print_elems(*a, *b);
 		if (check_swap(*a, get_marked_count(*a), markup_index_count, markup_index_set))
 		{
 			if (!do_sa(a, str))
@@ -74,7 +73,6 @@ int	push_to_b_value(t_element **a, t_element **b, t_string **str)
 {
 	while	(contains_unmarked(*a))
 	{
-		print_elems(*a, *b);
 		if (check_swap(*a, get_marked_count(*a), markup_value_count, markup_value_set))
 		{
 			if (!do_sa(a, str))

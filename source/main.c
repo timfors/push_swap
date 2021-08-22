@@ -45,12 +45,21 @@ int	main(int argc, char **argv)
 	a = parse(argv, argc);
 	b = 0;
 	str = 0;
-	if (a && do_markup_value(a))
+	if (a && do_markup_index(a))
 	{
-		print_elems_full(a);
-		push_to_b_value(&a, &b, &str);
+		push_to_b_index(&a, &b, &str);
 		print_elems(a, b);
-		string_print(str);
+		push_to_a(&a, &b, &str);
+		int roll = count_for_rotate(a, elem_min(a)->value);
+		int size = elem_size(a);
+		if (roll > (size / 2))
+			while (roll++ < size)
+				do_rra(&a, &str);
+		else if (roll)
+			while (roll--)
+				if (!do_ra(&a, &str))
+					return (0);
+		printf("TOTAL: %d", string_size(str));
 	}
 	else 
 		ft_putstr_fd("Error\n", 1);
