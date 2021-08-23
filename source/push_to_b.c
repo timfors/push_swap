@@ -59,7 +59,6 @@ int	push_to_b_index(t_element **a, t_element **b, t_string **str)
 		{
 			if (!do_sa(a, str))
 				return (0);
-			markup_index_set(*a);
 		}
 		else if ((*a)->is_marked && !do_ra(a, str))
 			return (0);

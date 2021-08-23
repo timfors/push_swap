@@ -79,7 +79,6 @@ static void	set_steps(int *a_steps, int *b_steps, int size_a, int size_b)
 	else if (reverse_b < *b_steps && reverse_b < *b_steps - *a_steps)
 		*b_steps = -reverse_b;
 }
-#include <stdio.h>
 
 int	rotate(t_element **a, t_element **b, t_string **str, int index)
 {

@@ -1,67 +1,86 @@
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
-void	print_elems(t_element *a, t_element *b)
+t_string	*sort_index(t_element *a)
 {
-	while (a || b)
+	t_element	*new_a;
+	t_element	*b;
+	t_string	*str;
+
+	new_a = elem_copy(a);
+	str = 0;
+	b = 0;
+	if (!new_a)
+		return (0);
+	if (!do_markup_index(new_a) || !push_to_b_index(&new_a, &b, &str) || !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
 	{
-		printf("|\t");
-		if (a)
-		{
-			printf("%d", a->value);
-			a = a->next;
-		}
-		printf("\t|\t");
-		if (b)
-		{
-			printf("%d", b->value);
-			b = b->next;
-		}
-		printf("\t|\n");
+		elem_clear(&b);
+		elem_clear(&new_a);
+		return (0);
 	}
-	printf("-\t-\t-\t-\t-\n");
+	elem_clear(&b);
+	elem_clear(&new_a);
+	return (str);
 }
 
-
-void	print_elems_full(t_element *a)
+t_string	*sort_value(t_element *a)
 {
-	while (a)
+	t_element	*new_a;
+	t_element	*b;
+	t_string	*str;
+
+	new_a = elem_copy(a);
+	str = 0;
+	b = 0;
+	if (!new_a)
+		return (0);
+	if (!do_markup_value(new_a) || !push_to_b_value(&new_a, &b, &str) || !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
 	{
-		printf("__\t\t\t__\n\n");
-		printf("VALUE:\t\t%d\n", a->value);
-		printf("INDEX:\t\t%d\n", a->index);
-		printf("IS_MARKED:\t%d\n", a->is_marked);
-		a = a->next;
+		elem_clear(&b);
+		elem_clear(&new_a);
+		return (0);
 	}
-	printf("--------------------\n---------------------\n");
+	elem_clear(&b);
+	elem_clear(&new_a);
+	return (str);
+}
+
+static	void	proceed_strs(t_string **str_index, t_string **str_value)
+{
+	if (!str_index && !str_value)
+		ft_putstr_fd("Error\n", 1);
+	else if (!*str_index && *str_value)
+		string_print(*str_value);
+	else if (*str_index && !*str_value)
+		string_print(*str_index);
+	else if (string_size(*str_index) < string_size(*str_value))
+		string_print(*str_index);
+	else
+		string_print(*str_value);
+	if (*str_index)
+		string_clear(str_index);
+	if (*str_value)
+		string_clear(str_value);
 }
 
 int	main(int argc, char **argv)
 {
 	t_element	*a;
-	t_element	*b;
-	t_string	*str;
+	t_string	*str_index;
+	t_string	*str_value;
 
-	a = parse(argv, argc);
-	b = 0;
-	str = 0;
-	if (a && do_markup_index(a))
+	if (argc == 1)
 	{
-		push_to_b_index(&a, &b, &str);
-		print_elems(a, b);
-		push_to_a(&a, &b, &str);
-		int roll = count_for_rotate(a, elem_min(a)->value);
-		int size = elem_size(a);
-		if (roll > (size / 2))
-			while (roll++ < size)
-				do_rra(&a, &str);
-		else if (roll)
-			while (roll--)
-				if (!do_ra(&a, &str))
-					return (0);
-		printf("TOTAL: %d", string_size(str));
+		ft_putstr_fd("\n", 1);
+		return (1);
 	}
-	else 
+	a = parse(argv, argc);
+	if (!a)
+	{
 		ft_putstr_fd("Error\n", 1);
+		return (-1);
+	}
+	str_index = sort_index(a);
+	str_value = sort_value(a);
 	elem_clear(&a);
+	proceed_strs(&str_index, &str_value);
 }

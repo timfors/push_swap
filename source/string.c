@@ -68,10 +68,12 @@ void		string_clear(t_string **str)
 	current = prev->next;
 	while (prev)
 	{
-		free(prev->content);
+		if (prev->content)
+			free(prev->content);
 		free(prev);
 		prev = current;
-		current = current->next;
+		if (current)
+			current = current->next;
 	}
 }
 
