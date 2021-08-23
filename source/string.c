@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:33:39 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:35:06 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static t_string	*string_create(const char *new_str)
@@ -18,10 +30,9 @@ static t_string	*string_create(const char *new_str)
 	}
 	new_elem->content = chars;
 	return (new_elem);
-
 }
 
-int		string_size(t_string *str)
+int	string_size(t_string *str)
 {
 	int	res;
 
@@ -34,11 +45,11 @@ int		string_size(t_string *str)
 	return (res);
 }
 
-int		string_add(t_string **str, const char *new_str)
+int	string_add(t_string **str, const char *new_str)
 {
 	t_string	*new;
 	t_string	*tmp;
-	
+
 	new = string_create(new_str);
 	if (!new)
 	{
@@ -57,7 +68,7 @@ int		string_add(t_string **str, const char *new_str)
 	return (1);
 }
 
-void		string_clear(t_string **str)
+void	string_clear(t_string **str)
 {
 	t_string	*prev;
 	t_string	*current;
@@ -77,7 +88,7 @@ void		string_clear(t_string **str)
 	}
 }
 
-void		string_print(t_string *str)
+void	string_print(t_string *str)
 {
 	t_string	*tmp;
 

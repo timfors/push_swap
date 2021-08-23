@@ -6,7 +6,7 @@
 /*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 23:48:20 by bojamee           #+#    #+#             */
-/*   Updated: 2021/04/25 00:37:37 by bojamee          ###   ########.fr       */
+/*   Updated: 2021/08/23 14:45:15 by bojamee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_strtoint(const char *str, int start, int end, int *num)
 {
-	int		i;
+	int			i;
 	long long	res;
 
 	res = 0;

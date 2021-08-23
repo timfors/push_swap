@@ -6,7 +6,7 @@
 /*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 23:48:20 by bojamee           #+#    #+#             */
-/*   Updated: 2021/04/25 00:37:37 by bojamee          ###   ########.fr       */
+/*   Updated: 2021/08/23 14:44:56 by bojamee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long long	ft_pow(int num, int size)
 {
-	int		i;
+	int			i;
 	long long	res;
 
 	i = -1;

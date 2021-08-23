@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   markup_index.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:10:33 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:43:34 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static void	bubble_sort(int	**data, int size)
@@ -10,7 +22,7 @@ static void	bubble_sort(int	**data, int size)
 	arr = *data;
 	while (i < size - 1)
 	{
-		while(arr[i + 1] < arr[i] && i >= 0)
+		while (arr[i + 1] < arr[i] && i >= 0)
 		{
 			tmp = arr[i + 1];
 			arr[i + 1] = arr[i];
@@ -23,8 +35,8 @@ static void	bubble_sort(int	**data, int size)
 
 static int	set_index(t_element *el)
 {
-	int		*arr;
-	int		i;
+	int			*arr;
+	int			i;
 	t_element	*tmp;
 
 	arr = elem_to_arr(el);
@@ -40,15 +52,16 @@ static int	set_index(t_element *el)
 		tmp->index = i;
 		i++;
 	}
+	free(arr);
 	return (1);
 }
 
-int		markup_index_count(t_element *el)
+int	markup_index_count(t_element *el)
 {
-	int		result;
-	int		prev_index;
+	int			result;
+	int			prev_index;
 	t_element	*first;
-	int		roll_count;
+	int			roll_count;
 
 	prev_index = el->index;
 	result = 1;
@@ -67,11 +80,11 @@ int		markup_index_count(t_element *el)
 	return (result);
 }
 
-void		markup_index_set(t_element *el)
+void	markup_index_set(t_element *el)
 {
-	int		prev_index;
+	int			prev_index;
 	t_element	*first;
-	int		roll_count;
+	int			roll_count;
 
 	markup_reset(el);
 	prev_index = el->index;
@@ -90,10 +103,10 @@ void		markup_index_set(t_element *el)
 		do_roll(&el, -1);
 }
 
-int		do_markup_index(t_element *el)
+int	do_markup_index(t_element *el)
 {
-	int		max_count;
-	int		current_count;
+	int			max_count;
+	int			current_count;
 	t_element	*first;
 
 	if (!set_index(el))

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   elem_get.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:05:09 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:05:44 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-int		elem_size(t_element *el)
+int	elem_size(t_element *el)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	while (el)
@@ -24,7 +36,7 @@ t_element	*elem_last(t_element *el)
 
 t_element	*elem_get(t_element *el, int index)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (el && i != index)
@@ -37,7 +49,7 @@ t_element	*elem_get(t_element *el, int index)
 	return (el);
 }
 
-int		*elem_to_arr(t_element *el)
+int	*elem_to_arr(t_element *el)
 {
 	int	*res;
 	int	i;

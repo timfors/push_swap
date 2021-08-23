@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:08:12 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:44:08 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 t_string	*sort_index(t_element *a)
@@ -11,7 +23,8 @@ t_string	*sort_index(t_element *a)
 	b = 0;
 	if (!new_a)
 		return (0);
-	if (!do_markup_index(new_a) || !push_to_b_index(&new_a, &b, &str) || !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
+	if (!do_markup_index(new_a) || !push_to_b_index(&new_a, &b, &str)
+		|| !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
 	{
 		elem_clear(&b);
 		elem_clear(&new_a);
@@ -33,7 +46,8 @@ t_string	*sort_value(t_element *a)
 	b = 0;
 	if (!new_a)
 		return (0);
-	if (!do_markup_value(new_a) || !push_to_b_value(&new_a, &b, &str) || !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
+	if (!do_markup_value(new_a) || !push_to_b_value(&new_a, &b, &str)
+		|| !push_to_a(&new_a, &b, &str) || !rotate_to_min(&new_a, &str))
 	{
 		elem_clear(&b);
 		elem_clear(&new_a);

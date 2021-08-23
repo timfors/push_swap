@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   do_roll.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:02:56 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:03:57 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	do_roll(t_element **el, int direction)
 {
 	t_element	*first;
 	t_element	*tmp;
-	int		size;
+	int			size;
 
 	if (!el || elem_size(*el) <= 1 || !direction)
 		return ;
@@ -18,7 +30,7 @@ void	do_roll(t_element **el, int direction)
 		first->next = 0;
 		elem_last(*el)->next = first;
 	}
-	else 
+	else
 	{
 		tmp = elem_get(*el, size - 2);
 		tmp->next->next = *el;

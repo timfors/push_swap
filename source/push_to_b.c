@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_to_b.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/23 14:30:46 by bojamee           #+#    #+#             */
+/*   Updated: 2021/08/23 14:33:13 by bojamee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-int		check_swap(t_element *a, int count, count_func calc_count, set_mark mark)
+int	check_swap(t_element *a, int count,
+		t_count_func calc_count, t_set_mark mark)
 {
-	int		new_count;
-	int		max_count;
+	int			new_count;
+	int			max_count;
 	t_element	*first;
 
 	do_swap(&a);
@@ -26,7 +39,7 @@ int		check_swap(t_element *a, int count, count_func calc_count, set_mark mark)
 	return (max_count > count);
 }
 
-int		get_marked_count(t_element *a)
+int	get_marked_count(t_element *a)
 {
 	int	res;
 
@@ -53,9 +66,10 @@ static int	contains_unmarked(t_element *a)
 
 int	push_to_b_index(t_element **a, t_element **b, t_string **str)
 {
-	while	(contains_unmarked(*a))
+	while (contains_unmarked(*a))
 	{
-		if (check_swap(*a, get_marked_count(*a), markup_index_count, markup_index_set))
+		if (check_swap(*a, get_marked_count(*a),
+				markup_index_count, markup_index_set))
 		{
 			if (!do_sa(a, str))
 				return (0);
@@ -70,9 +84,10 @@ int	push_to_b_index(t_element **a, t_element **b, t_string **str)
 
 int	push_to_b_value(t_element **a, t_element **b, t_string **str)
 {
-	while	(contains_unmarked(*a))
+	while (contains_unmarked(*a))
 	{
-		if (check_swap(*a, get_marked_count(*a), markup_value_count, markup_value_set))
+		if (check_swap(*a, get_marked_count(*a),
+				markup_value_count, markup_value_set))
 		{
 			if (!do_sa(a, str))
 				return (0);
