@@ -6,7 +6,7 @@
 /*   By: bojamee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:08:12 by bojamee           #+#    #+#             */
-/*   Updated: 2021/08/23 14:44:08 by bojamee          ###   ########.fr       */
+/*   Updated: 2021/08/23 15:51:39 by bojamee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ int	main(int argc, char **argv)
 	t_string	*str_value;
 
 	if (argc == 1)
-	{
-		ft_putstr_fd("\n", 1);
 		return (1);
-	}
 	a = parse(argv, argc);
 	if (!a)
 	{
